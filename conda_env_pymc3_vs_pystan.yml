@@ -1,0 +1,17 @@
+name: pymc3_vs_pystan
+dependencies:
+- python=3.5
+- jupyter
+- ipywidgets
+- numpy
+- scipy
+- matplotlib
+- pandas
+- pytables
+- scikit-learn
+- seaborn
+- patsy
+- requests
+- pip
+- pip:
+    - regex

@@ -1,0 +1,97 @@
+### DATA ----------------------------------------------------------------------
+
+## flat files
+*.*sv
+*.*son
+
+## Office docs
+*.xls*
+*.doc*
+*.ppt*
+*.numbers
+*.pages
+*.key
+*.pdf
+
+## archives
+*.tar*
+*.tgz
+*.zip
+*.bz2
+*.7z
+
+## basic databases: sqlite, access, redis, hdf5
+*.db
+*.mdb
+*.rdb
+*.h5
+
+
+### PYTHON --------------------------------------------------------------------
+
+## iPython notebooks
+.ipynb_checkpoints/*
+
+## Python builds
+*.py[cod]
+*.egg*
+*.pickle
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib*
+
+## Install logs
+pip-log.txt
+
+## unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+## Translations
+*.mo
+
+## PyDev (Eclipse)
+.project
+.pydevproject
+
+## PyCharm IDE
+.idea/*
+
+
+## R --------------------------------------------------------------------------
+.RData
+.Rhistory
+
+
+## MISC -----------------------------------------------------------------------
+
+## OSX
+*.asc
+.DS_Store
+*.names
+._*
+.Spotlight-V100
+.Trashes
+
+## Dev configs
+dev.yaml
+
+## Logs
+*.log
+
+
+## C extensions
+*.so
+
+## AOB
+temp/
+reveal.js/
+
