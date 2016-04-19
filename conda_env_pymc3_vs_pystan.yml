@@ -11,7 +11,10 @@ dependencies:
 - scikit-learn
 - seaborn
 - patsy
+- statsmodels
 - requests
 - pip
 - pip:
     - regex
+    - Cython
+    - pystan

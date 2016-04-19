@@ -13,7 +13,6 @@ Copyright Applied AI Ltd 2016
 
 ---
 
-
 # Development
 
 ## Git clone the repo to your workspace.
@@ -24,14 +23,19 @@ e.g. in Mac OSX terminal:
         $> cd pymc3_vs_pystan
 
 
+**NOTES:**
+
++ This project uses Python 3.5, and was developed on a Macbook Pro
+OSX 10.10.5 using the Anaconda distro with a new virtualenv on 19 April 2016
++ The project requires PyMC3 (with an associated Theano install) and PyStan (with an associated Stan install) so is quite heavy.
++ Specific versions of key packages for clarity: `pymc3-3.0`, `theano-0.8.1`,
+`pystan-2.9.0.0`
+
+
 
 ## Setup a virtual environment for Python libraries
 
-**NOTE:** using Python 3.5
-
-Using Anaconda distro,
-
-1. create a new virtual env, installing packages from env YAML file:
+1. Using create a new virtualenv, installing packages from env YAML file:
 
 
         $> conda env create --file conda_env_pymc3_vs_pystan.yml
@@ -46,6 +50,7 @@ Using Anaconda distro,
 3. Launch Jupyter Notebook server
 
         $> jupyter notebook
+
 
 
 ---
