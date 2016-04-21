@@ -1,6 +1,7 @@
-# Applied AI PyMC3 Demo
+##### Jonathan Sedar Personal Project
 
-_Applied AI Internal Demo Project_
+# PyMC3 Vs PyStan Comparison
+_Spring 2016_
 
 Very small datasets are held in the repo for convenience.
 
