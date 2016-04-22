@@ -19,6 +19,7 @@
 *.zip
 *.bz2
 *.7z
+*.pkl
 
 ## basic databases: sqlite, access, redis, hdf5
 *.db
