@@ -23,6 +23,8 @@ def read_pickle(relnm):
    
     with open(relnm, 'rb') as f:
         obj = pickle.load(f)
+        
+    print('Loaded object from disk at {}'.format(relnm))
     return obj
 
 
