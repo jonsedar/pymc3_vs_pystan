@@ -90,22 +90,52 @@ def trace_median(x):
     return pd.Series(np.median(x,0), name='median')
 
 
+# def plot_traces_pymc(trcs, varnames=None):
+#    ''' Convenience fn: plot traces with overlaid means and values '''
+#
+#     nrows = len(trcs.varnames)
+#     if varnames is not None:
+#         nrows = len(varnames)
+#         
+#     ax = pm.traceplot(trcs, varnames=varnames, figsize=(12,nrows*1.4)
+#         ,lines={k: v['mean'] for k, v in 
+#             pm.df_summary(trcs,varnames=varnames).iterrows()})
+# 
+#     for i, mn in enumerate(pm.df_summary(trcs, varnames=varnames)['mean']):
+#         ax[i,0].annotate('{:.2f}'.format(mn), xy=(mn,0), xycoords='data'
+#                     ,xytext=(5,10), textcoords='offset points', rotation=90
+#                     ,va='bottom', fontsize='large', color='#AA0022')    
+
+        
 def plot_traces_pymc(trcs, varnames=None):
-    ''' Convenience fn: plot traces with overlaid means and values '''
+    ''' Convenience fn: plot traces with overlaid means and values 
+        Handle nested traces for hierarchical models
+    '''
 
     nrows = len(trcs.varnames)
     if varnames is not None:
         nrows = len(varnames)
+    
+    ax = pm.traceplot(trcs, varnames=varnames, figsize=(12, nrows*1.4),
+                      lines={k: v['mean'] for k, v in 
+                                pm.df_summary(trcs,varnames=varnames).iterrows()},
+                      combined=True)
+
+    # don't label the nested traces (a bit clumsy this: consider tidying)
+    dfmns = pm.df_summary(trcs, varnames=varnames)['mean'].reset_index()
+    dfmns.rename(columns={'index':'featval'}, inplace=True)
+    dfmns = dfmns.loc[dfmns['featval'].apply(lambda x: re.search('__[1-9]{1,}', x) is None)]
+    dfmns['draw'] = dfmns['featval'].apply(lambda x: re.search('__0{1}$', x) is None)
+    dfmns['pos'] = np.arange(dfmns.shape[0])
+    dfmns.set_index('pos', inplace=True)
+
+    for i, r in dfmns.iterrows():
+        if r['draw']:
+            ax[i,0].annotate('{:.2f}'.format(r['mean']), xy=(r['mean'],0)
+                    ,xycoords='data', xytext=(5,10)
+                    ,textcoords='offset points', rotation=90
+                    ,va='bottom', fontsize='large', color='#AA0022') 
         
-    ax = pm.traceplot(trcs, varnames=varnames, figsize=(12,nrows*1.4)
-        ,lines={k: v['mean'] for k, v in 
-            pm.df_summary(trcs,varnames=varnames).iterrows()})
-
-    for i, mn in enumerate(pm.df_summary(trcs, varnames=varnames)['mean']):
-        ax[i,0].annotate('{:.2f}'.format(mn), xy=(mn,0), xycoords='data'
-                    ,xytext=(5,10), textcoords='offset points', rotation=90
-                    ,va='bottom', fontsize='large', color='#AA0022')    
-
         
 def plot_stan_trc(dftrc):
     """
