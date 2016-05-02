@@ -22,7 +22,7 @@
 *.pkl
 
 ## basic databases: sqlite, access, redis, hdf5
-*.db
+# ALLOW *.db
 *.mdb
 *.rdb
 *.h5
