@@ -13,9 +13,9 @@ dependencies:
 - patsy
 - statsmodels
 - requests
+- pystan
 - pip
 - pip:
     - regex
     - Cython
-    - pystan
     - daft
